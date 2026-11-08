@@ -5,7 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NASA Space Explorer</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <script type="module"
+  src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.4.0/model-viewer.min.js">
+</script>
 </head>
+<dialog id="photoDialog" aria-labelledby="photoTitle">
+  <form method="dialog">
+    <button type="submit">Close</button>
+  </form>
+
+  <h2 id="photoTitle"></h2>
+  <p id="photoDate"></p>
+  <img id="photoImage" src="" alt="">
+  <details id="ganymede3D" hidden>
+  <summary>Explore Ganymede in 3D</summary>
+  <p>Drag to rotate the moon.</p>
+
+  <model-viewer
+    src="./img/ganymede/YOUR-MODEL.gltf"
+    alt="3D model of Jupiter's moon Ganymede"
+    camera-controls
+    touch-action="pan-y"
+    style="display: block; width: 100%; height: 320px;">
+  </model-viewer>
+
+  <small>3D model credit: NASA VTAD</small>
+</details>
+  <p id="photoExplanation"></p>
+</dialog>
 <body>
   <div class="container">
     <header class="site-header">
@@ -19,6 +46,42 @@
       <button>Get Space Images</button>
     </div>
 
+<aside class="space-fact" aria-label="Space fact">
+  <span class="space-fact-label">Did You Know?</span>
+  <p id="spaceFact"></p>
+</aside>
+<section class="motion-section" aria-labelledby="motionHeading">
+  <h2 id="motionHeading">Explore in Motion</h2>
+
+  <div class="motion-grid">
+    <button type="button" data-motion="galaxy">
+      <span>360° VIDEO</span>
+      <strong>Galactic Center</strong>
+      <small>Play, then drag to look around</small>
+    </button>
+
+    <button type="button" data-motion="eyes">
+      <span>INTERACTIVE 3D</span>
+      <strong>Jupiter in 3D</strong>
+      <small>Drag to orbit around Jupiter</small>
+    </button>
+
+    <button type="button" data-motion="rotation">
+      <span>ANIMATION</span>
+      <strong>Jupiter Rotation</strong>
+      <small>Watch the planet spin</small>
+    </button>
+  </div>
+</section>
+
+<dialog id="motionDialog" aria-labelledby="motionTitle">
+  <form method="dialog">
+    <button type="submit">Close</button>
+  </form>
+  <h2 id="motionTitle"></h2>
+  <div id="motionPlayer"></div>
+  <p><a id="motionSource" target="_blank" rel="noopener">Open original</a></p>
+</dialog>
     <div id="gallery" class="gallery">
       <div class="placeholder">
         <div class="placeholder-icon">🔭</div>
